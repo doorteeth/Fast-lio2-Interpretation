@@ -74,8 +74,8 @@
         "/home/dt/gitProject/AB3DMOT-master/Xinshuo_PyToolbox"
     ],
     "files.associations": {
-        ".fantomasignore": "ignore",
         "*.py": "python",
+        ".fantomasignore": "ignore",
         "random": "cpp",
         "vector": "cpp",
         "cctype": "cpp",
@@ -141,6 +141,10 @@
         "typeindex": "cpp",
         "typeinfo": "cpp",
         "variant": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "compare": "cpp",
+        "concepts": "cpp",
+        "ranges": "cpp",
+        "stop_token": "cpp"
     }
 }

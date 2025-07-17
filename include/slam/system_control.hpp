@@ -7,6 +7,7 @@
 #include <nav_msgs/Path.h>
 #include <pcl/filters/voxel_grid.h>
 #include <ros/ros.h>
+#include <string.h>
 
 class SystemControl
 {

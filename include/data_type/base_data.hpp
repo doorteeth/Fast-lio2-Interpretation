@@ -1,7 +1,7 @@
 #pragma once
 
+#include <pcl/point_cloud.h>
 #include <pcl/point_types.h>
-
 using PointType = pcl::PointXYZINormal;
 using PointCloudXYZI = pcl::PointCloud<PointType>;
 

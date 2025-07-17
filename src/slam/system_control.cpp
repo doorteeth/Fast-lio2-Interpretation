@@ -18,12 +18,11 @@ SystemControl::SystemControl(ros::NodeHandlePtr nhp) : node_ptr_(nhp)
     FOV_DEG = (ConfigParam::getInstance().fov_deg + 10.0) > 179.9 ? 179.9 : (ConfigParam::getInstance().fov_deg + 10.0);
     // 在传感器数据处理中（如点云滤波、视场范围判断），常用半视野角的余弦值来快速判断某个方向是否在视野范围内（通过向量点积比较）
     HALF_FOV_COS = cos((FOV_DEG) * 0.5 * M_PI / 180.0);
-    memset(point_selected_surf, true, sizeof(point_selected_surf));
-    memset(res_last, -1000.0f, sizeof(res_last));
+    std::fill(std::begin(point_selected_surf), std::end(point_selected_surf), true);
+    std::fill(std::begin(res_last), std::end(res_last), -1000.0f);
+
     downSizeFilterSurf.setLeafSize(ConfigParam::getInstance().filter_size_surf_min, ConfigParam::getInstance().filter_size_surf_min, ConfigParam::getInstance().filter_size_surf_min);
     downSizeFilterMap.setLeafSize(ConfigParam::getInstance().filter_size_map_min, ConfigParam::getInstance().filter_size_map_min, ConfigParam::getInstance().filter_size_map_min);
-    memset(point_selected_surf, true, sizeof(point_selected_surf));
-    memset(res_last, -1000.0f, sizeof(res_last));
 
     Lidar_T_wrt_IMU << VEC_FROM_ARRAY(ConfigParam::getInstance().extrinT);
     Lidar_R_wrt_IMU << MAT_FROM_ARRAY(ConfigParam::getInstance().extrinR);
