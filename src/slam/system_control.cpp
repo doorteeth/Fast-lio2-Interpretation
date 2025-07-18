@@ -26,6 +26,11 @@ SystemControl::SystemControl(ros::NodeHandlePtr nhp) : node_ptr_(nhp)
 
     Lidar_T_wrt_IMU << VEC_FROM_ARRAY(ConfigParam::getInstance().extrinT);
     Lidar_R_wrt_IMU << MAT_FROM_ARRAY(ConfigParam::getInstance().extrinR);
+    p_imu_ptr_->set_extrinsic(Lidar_T_wrt_IMU, Lidar_R_wrt_IMU);
+    p_imu_ptr_->set_gyr_cov(V3D(ConfigParam::getInstance().gyr_cov, ConfigParam::getInstance().gyr_cov, ConfigParam::getInstance().gyr_cov));
+    p_imu_ptr_->set_acc_cov(V3D(ConfigParam::getInstance().acc_cov, ConfigParam::getInstance().acc_cov, ConfigParam::getInstance().acc_cov));
+    p_imu_ptr_->set_gyr_bias_cov(V3D(ConfigParam::getInstance().b_gyr_cov, ConfigParam::getInstance().b_gyr_cov, ConfigParam::getInstance().b_gyr_cov));
+    p_imu_ptr_->set_acc_bias_cov(V3D(ConfigParam::getInstance().b_acc_cov, ConfigParam::getInstance().b_acc_cov, ConfigParam::getInstance().b_acc_cov));
 }
 
 void SystemControl::InitParam()

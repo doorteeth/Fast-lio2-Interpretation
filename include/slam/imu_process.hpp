@@ -1,7 +1,11 @@
+#pragma once
+
 #include "data_type/base_data.hpp"
 #include "data_type/eigen_type.hpp"
 #include <Eigen/Dense>
+#include <deque>
 #include <fast_lio/Pose6D.h>
+#include <fstream>
 #include <ostream>
 #include <pcl/point_cloud.h>
 #include <sensor_msgs/Imu.h>
@@ -23,11 +27,21 @@ public:
     void set_acc_bias_cov(const V3D &b_a);
     Eigen::Matrix<double, 12, 12> Q;
 
+    std::ofstream fout_imu;
+    V3D cov_acc;
+    V3D cov_gyr;
+    V3D cov_acc_scale;
+    V3D cov_gyr_scale;
+    V3D cov_bias_gyr;
+    V3D cov_bias_acc;
+    double first_lidar_time;
+    int lidar_type;
+
 private:
     PointCloudXYZI::Ptr cur_pcl_un_;
     sensor_msgs::ImuConstPtr last_imu_;
     std::deque<sensor_msgs::ImuConstPtr> v_imu_;
-    std::vector<Pose6D> IMUpose;
+    std::vector<fast_lio::Pose6D> IMUpose;
     std::vector<M3D> v_rot_pcl_;
     M3D Lidar_R_wrt_IMU;
     V3D Lidar_T_wrt_IMU;

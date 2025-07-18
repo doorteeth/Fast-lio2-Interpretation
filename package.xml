@@ -14,7 +14,8 @@
   <license>BSD</license>
 
   <author email="shichi.yu@163.com">Ji Zhang</author>
-  
+  <maintainer email="shichi.yu@163.com">Your Name</maintainer>
+
   <buildtool_depend>catkin</buildtool_depend>
   <build_depend>geometry_msgs</build_depend>
   <build_depend>nav_msgs</build_depend>
